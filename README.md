@@ -7,6 +7,7 @@
  
 ## 使用
 
+ 复制 https://hub.fastgit.xyz/t-lh/iosread/blob/main/iosread.html
 
 
 

@@ -28,9 +28,6 @@ function htmlData(): string
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>爱阅书香收集的书源仓库合集</title>
-    <meta name="description" content="  介绍介绍爱阅书香：根据书源，将相应网站的内容映射到软件中！！！书源：一个网站的规则描述文件，可能包括有多个来源;来源：聚合网站包括多个网站的内容，一个来源表示其中一个网站。仓库，存储书源的地方，可能有多个书源；">
-    <link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://at.alicdn.com/t/font_8v3czwksspqlg14i.css">
   </head>
   <body>
 
@@ -40,6 +37,7 @@ function htmlData(): string
         <hr>
         <article itemscope itemtype="http://schema.org/BlogPosting">
             <h1 id="收集的书源仓库">收集的书源仓库</h1>
+            <h4> 书源作者不一定为原作者 </h4>
             ' . linkData() . '
 
         </article>
@@ -61,21 +59,22 @@ function htmlData(): string
 </html>';
 }
 
+function linkReplace($link)
+{
+    return str_replace('github.com', 'hub.fastgit.xyz', $link);
+}
+
 function linkData(): string
 {
-    $links = [
-        [
-            'name' => '相逢应不识',
-            'link' => 'https://gitee.com/ift123/iFreeTimeBookConfigs'
-        ]
-    ];
+    $links = getLinks();
     $tr = '';
     foreach ($links as $link) {
-        $tr .= '<tr>
+        $tr .= '
+                <tr>
                     <td><strong>' . $link['name'] . '</strong></td>
                     <td><a href="' . $link['link'] . '">' . $link['link'] . '</a>
                     </td>
-                    <td><a href="ifreetime://configs/' . $link['link'] . '">点击导入</a></td>
+                    <td><a href="ifreetime://configs/' . linkReplace($link['link']) . '">点击导入</a></td>
                 </tr>
         ';
     }
@@ -89,76 +88,49 @@ function linkData(): string
                     <td>操作</td>
                 </tr>
                 ' . $tr . '
-                <tr>
-                    <td><strong>abc君</strong></td>
-                    <td><a href="https://gitee.com/weiniff/ibooks">https://gitee.com/weiniff/ibooks</a></td>
-                    <td><a href="ifreetime://configs/https://gitee.com/weiniff/ibooks">点击导入</a></td>
-                </tr>
-                <tr>
-                    <td><strong>BlackTouma</strong></td>
-                    <td><a href="https://gitee.com/BlackTouma/iFreeTimeBookConfigs">https://gitee.com/BlackTouma/iFreeTimeBookConfigs</a>
-                    </td>
-                    <td><a href="ifreetime://configs/https://gitee.com/BlackTouma/iFreeTimeBookConfigs">点击导入</a></td>
-                </tr>
-                <tr>
-                    <td><strong>纲吉</strong></td>
-                    <td><a href="https://gitee.com/gangxiaoji/bookConfigs">https://gitee.com/gangxiaoji/bookConfigs</a>
-                    </td>
-                    <td><a href="ifreetime://configs/https://gitee.com/gangxiaoji/bookConfigs">点击导入</a></td>
-                </tr>
-                <tr>
-                    <td><strong>feifeiadmim</strong></td>
-                    <td><a href="https://gitee.com/feifeiadmim/book_yuan">https://gitee.com/feifeiadmim/book_yuan</a>
-                    </td>
-                    <td><a href="ifreetime://configs/https://gitee.com/feifeiadmim/book_yuan">点击导入</a></td>
-                </tr>
-                <tr>
-                    <td><strong>曙光</strong></td>
-                    <td><a href="https://gitee.com/shuguanga/aiyue">https://gitee.com/shuguanga/aiyue</a></td>
-                    <td><a href="ifreetime://configs/https://gitee.com/shuguanga/aiyue">点击导入</a></td>
-                </tr>
-                <tr>
-                    <td><strong>zxhzxhz</strong></td>
-                    <td><a href="https://gitee.com/zxhzxhz/booksource">https://gitee.com/zxhzxhz/booksource</a></td>
-                    <td><a href="ifreetime://configs/https://gitee.com/zxhzxhz/booksource">点击导入</a></td>
-                </tr>
-                <tr>
-                    <td><strong>Liquor030</strong></td>
-                    <td><a href="https://gitee.com/Liquor030/iFreeTimeBookConfigs">https://gitee.com/Liquor030/iFreeTimeBookConfigs</a>
-                    </td>
-                    <td><a href="ifreetime://configs/https://gitee.com/Liquor030/iFreeTimeBookConfigs">点击导入</a></td>
-                </tr>
-                <tr>
-                    <td><strong>Mxy</strong></td>
-                    <td><a href="https://gitee.com/mxyseo/iosread">https://gitee.com/mxyseo/iosread</a></td>
-                    <td><a href="ifreetime://configs/https://gitee.com/mxyseo/iosread">点击导入</a></td>
-                </tr>
-                <tr>
-                    <td><strong>灰太狼</strong></td>
-                    <td><a href="https://gitee.com/Goodyaoshi/iFreeTimeBookConfigs">https://gitee.com/Goodyaoshi/iFreeTimeBookConfigs</a>
-                    </td>
-                    <td><a href="ifreetime://configs/https://gitee.com/Goodyaoshi/iFreeTimeBookConfigs">点击导入</a></td>
-                </tr>
-                <tr>
-                    <td><strong>wjc是竟成</strong></td>
-                    <td><a href="https://gitee.com/weijingcheng4/aiyueshuxiang">https://gitee.com/weijingcheng4/aiyueshuxiang</a>
-                    </td>
-                    <td><a href="ifreetime://configs/https://gitee.com/weijingcheng4/aiyueshuxiang">点击导入</a></td>
-                </tr>
-                <tr>
-                    <td><strong>在这</strong></td>
-                    <td><a href="https://gitee.com/adolphz/iFreeTimebookConfigs">https://gitee.com/adolphz/iFreeTimebookConfigs</a>
-                    </td>
-                    <td><a href="ifreetime://configs/https://gitee.com/adolphz/iFreeTimebookConfigs">点击导入</a></td>
-                </tr>
-                <tr>
-                    <td><strong>bug退散</strong></td>
-                    <td><a href="https://gitee.com/songshu079/i-free-timebook-configs">https://gitee.com/songshu079/i-free-timebook-configs</a>
-                    </td>
-                    <td><a href="ifreetime://configs/https://gitee.com/songshu079/i-free-timebook-configs">点击导入</a></td>
-                </tr>
                 </tbody>
             </table>';
+}
+
+function getLinks()
+{
+    $data = [];
+    $github_item = [
+        [
+            'name' => 'lyhfree',
+            'item' => 'aiyueshuxiang',
+            'value' => [
+                '116@23meigui.ibs', '171@171xiaoshuo.ibs', '24k@24kwx.ibs', '2K@2kzw.ibs', '2k@fpzw.ibs', '3040@130140.ibs',
+                '56@liuxs.ibs', '58@wbsxw.ibs', '88@baka.ibs', 'KING@kingxs.ibs', 'SF@sfacg.ibs', 'po18@po18vip.ibs',
+                '万相@yuanzun8.ibs', '丹书铁卷@dstiejuan.ibs', '乐文@lewenlewen.ibs', '乐文@lewentxt.ibs', '乐文@lwtxt.ibs',
+                '九桃@9taoxs.ibs', '书仓@shucang.ibs', '书本@bookben.ibs', '书本@xbookben.ibs', '书海阁@xinshuhaige.ibs',
+                '元宝@ybwzx9.ibs', '兔九三@tu93.ibs', '全本@qb5.ibs', '八八@fenxbook.ibs', '千千@qqxsnew.ibs', '古典@cngdwx.ibs',
+                '哩哔@linovelib.ibs', '夜伴@yeban360.ibs', '大文学@wucuoxs.ibs', '大河@dahexs.ibs', '大白@dabaipc.ibs',
+                '大雪天@daxuetian.ibs', '天籁@tianlaixsw.ibs', '奇书@kankezw.ibs', '妙笔@mbtxt.ibs', '妙笔阁@imiaobige.ibs',
+                '妙笔阁@imiaobige.ibs', '宙斯@zhousixs.ibs', '小小说@xiaoxs.ibs', '小说路上@xs63.ibs', '懒人@lanrenwx.ibs',
+                '文学迷@123wenxue.ibs', '斋书苑@zhaishuyuan.ibs', '旧时光@lanrenyuhai.ibs', '明月@56bok.ibs', '晋江@jjwxc.ibs',
+                '武林@50zw.ibs', '汝慕@rmipoz.ibs', '海棠@lovehtbooks.ibs', '火星女频@iceread.ibs', '灯笔@dengbi.ibs',
+                '热门@xinremenxs.ibs', '燃文@ranwen.ibs', '燃文@ranwen8.ibs', '爱奇艺@iqiyi.ibs', '爱尚@asxs.ibs',
+                '甜梦@tmwk9.ibs', '看书啦@kanshu5.ibs', '着笔@zbzw.ibs', '神凑@shencou.ibs', '笔下@bixia66.ibs',
+                '笔下@bxwxorg.ibs', '笔下@bxzww.ibs', '笔趣阁@8bqg.ibs', '笔趣阁@hananke.ibs', '笔趣阁@mibaoge.ibs',
+                '笔趣阁@uubqg.ibs', '笔趣阁@xbiquge.ibs', '笔趣阁@xsbiquge.ibs', '笔趣阁@xxbiquge.ibs', '第九@dijiubook.ibs',
+                '第九@dijiuzww.ibs', '米国度@myrics.ibs', '精品@jpxs123.ibs', '纵横@zongheng.ibs', '维C@vcxsw.ibs',
+                '耽美@danmei.ibs', '落秋@luoqiuzw.ibs', '读书者@dushuzhe.ibs', '读远@readfar.ibs', '豆腐@doufu.ibs',
+                '起点@qidian.ibs', '起舞@75zwz.ibs', '起读书@qidushu.ibs', '连载书@lianzaisu.ibs', '醋溜儿@clewxc.ibs',
+                '野鸡@yncjzs.ibs', '镇魂@zhenhunxiaoshuo.ibs', '长佩@gongzicp.ibs', '零点@0dkanshu.ibs', '顶点@23wx.ibs',
+                '风华居@fenghuaju.ibs', '飘天@piaotianzw.ibs', '飞卢@faloo.ibs', '饭圈@fqxsw.ibs'
+            ]
+        ]
+    ];
+
+    foreach ($github_item as $github) {
+        foreach ($github['value'] as $value) {
+            $daum['name'] = $github['name'];
+            $daum['link'] = "https://github.com/" . $github['name'] . "/" . $github['item'] . "/blob/master/$value";
+            $data[] = $daum;
+        }
+    }
+    return $data;
 }
 
 run();
