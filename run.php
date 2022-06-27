@@ -66,17 +66,20 @@ function linkReplace($link)
 
 function linkData(): string
 {
-    $links = getLinks();
+    $links_file = file_get_contents('link.json');
+    $links = json_decode($links_file, true);
     $tr = '';
     foreach ($links as $link) {
-        $tr .= '
+        foreach ($link['link'] as $value) {
+            $tr .= '
                 <tr>
                     <td><strong>' . $link['name'] . '</strong></td>
-                    <td><a href="' . $link['link'] . '">' . $link['link'] . '</a>
+                    <td><a href="https://github.com' . $value . '">https://github.com' . $value . '</a>
                     </td>
-                    <td><a href="ifreetime://configs/' . linkReplace($link['link']) . '">点击导入</a></td>
+                    <td><a href="ifreetime://configs/https://hub.fastgit.xyz' . $value . '">点击导入</a></td>
                 </tr>
         ';
+        }
     }
 
     return '
